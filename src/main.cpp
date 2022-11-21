@@ -1,6 +1,3 @@
-#include <functional>
-#include <iostream>
-#include <optional>
 
 #include <spdlog/spdlog.h>
 
@@ -10,7 +7,7 @@
 #include <internal_use_only/config.hpp>
 
 
-int main(int argc, const char **argv)
+int main()
 {
 	try {
 		// Use the default logger (stdout, multi-threaded, colored)
