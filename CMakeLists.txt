@@ -34,10 +34,10 @@ include(${_project_options_SOURCE_DIR}/Index.cmake)
 # Set the project name and language
 project(
   BoschFutureMobility
-  VERSION 0.0.1
+  VERSION 1.0.0
   DESCRIPTION ""
   HOMEPAGE_URL "https://github.com/TheLuckyCoder/BoschFutureMobility"
-  LANGUAGES CXX C)
+  LANGUAGES CXX)
 
 # This variable is set by project() in CMake 3.21+
 string(
@@ -122,7 +122,6 @@ dynamic_project_options(
 )
 
 target_compile_features(project_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
-# TODO: The INTERFACE library NAMESPACE ALIAS are missing! CK
 add_library(BoschFutureMobility::project_options INTERFACE IMPORTED)
 add_library(BoschFutureMobility::project_warnings INTERFACE IMPORTED)
 
@@ -155,7 +154,7 @@ if(MSVC)
 endif()
 
 # set the startup project for the "play" button in MSVC
-set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT intro)
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT robot)
 
 if(CMAKE_SKIP_INSTALL_RULES)
   return()
@@ -165,9 +164,7 @@ endif()
 
 # Add other targets that you want installed here, be default we just package the one executable
 # we know we want to ship
-package_project(TARGETS intro project_options project_warnings
-  # FIXME: this does not work! CK
-  # PRIVATE_DEPENDENCIES_CONFIGURED project_options project_warnings
+package_project(TARGETS robot project_options project_warnings
 )
 
 # Experience shows that explicit package naming can help make it easier to sort
