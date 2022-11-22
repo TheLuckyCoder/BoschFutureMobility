@@ -12,7 +12,6 @@ int main()
 	try {
 		// Use the default logger (stdout, multi-threaded, colored)
 		spdlog::info("Hello, {}!", "World");
-
 	} catch (const std::exception &e) {
 		spdlog::error("Unhandled exception in main: {}", e.what());
 	}

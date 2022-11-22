@@ -14,7 +14,7 @@ env:
   CONAN_SYSREQUIRES_MODE: enabled
   CONAN_USER_HOME: "${{ github.workspace }}/conan-cache"
   CONAN_USER_HOME_SHORT: "${{ github.workspace }}/conan-cache/short"
-  CLANG_TIDY_VERSION: "13.0.0"
+  CLANG_TIDY_VERSION: "14.0.0"
 
 jobs:
   Test:
@@ -34,8 +34,8 @@ jobs:
           - ubuntu-22.04
           - macos-latest
         compiler:
-          - llvm-13.0.0
-          - gcc-11
+          - llvm-14.0.0
+          - gcc-12
         generator:
           - "Ninja Multi-Config"
         build_type:
@@ -48,9 +48,9 @@ jobs:
         include:
           # Add appropriate variables for gcov version required. This will intentionally break
           # if you try to use a compiler that does not have gcov set
-          - compiler: gcc-11
+          - compiler: gcc-12
             gcov_executable: gcov
-          - compiler: llvm-13.0.0
+          - compiler: llvm-14.0.0
             gcov_executable: "llvm-cov gcov"
 
           # Set up preferred package generators, for given build configurations
@@ -60,7 +60,7 @@ jobs:
 
           # This exists solely to make sure a non-multiconfig build works
           - os: ubuntu-22.04
-            compiler: gcc-11
+            compiler: gcc-12
             generator: "Unix Makefiles"
             build_type: Debug
             gcov_executable: gcov
