@@ -35,7 +35,7 @@ jobs:
           - macos-latest
         compiler:
           - llvm-14.0.0
-          - gcc-12
+          #- gcc-12
         generator:
           - "Ninja Multi-Config"
         build_type:
