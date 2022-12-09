@@ -8,9 +8,9 @@ SerialCommunicationManager::SerialCommunicationManager(const unsigned int baud_r
   const std::string &device,
   ResponseHandler &response_handler)
   : response_handler_(response_handler),
+	serial_port_(io_service_, baud_rate, device, response_handler_),
 	io_service_thread_([&] { io_service_.run(); }),
-	response_handler_thread_(&ResponseHandler::run, &response_handler),
-	serial_port_(io_service_, baud_rate, device, response_handler_)
+	response_handler_thread_([&] { response_handler_.run(); })
 {
 }
 

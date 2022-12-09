@@ -26,9 +26,9 @@ class SerialCommunicationManager
   private:
 	ResponseHandler &response_handler_;
 	asio::io_service io_service_{};
+	SerialPortHandler serial_port_;
 	std::thread io_service_thread_;
 	std::thread response_handler_thread_;
-	SerialPortHandler serial_port_;
 };
 
 }// namespace serial
